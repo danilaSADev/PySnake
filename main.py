@@ -5,11 +5,9 @@ import snake as sn
 import time as time
 import tkinter as tk
 
-size = 500
-
 window = tk.Tk()
 window.title("Snake Game")
-cell_size = 25
+cell_size = 40
 board = sn.GameBoard(tk, sn.Vector2(20, 20), cell_size)
 board.DrawField()
 
@@ -39,7 +37,7 @@ while not board.isGameOver:
     board.DrawField()
     window.update()
     window.update_idletasks()
-    time.sleep(0.1)
+    time.sleep(0.05)
 
 board.Clear()
 os.execv(sys.executable, sys.argv)

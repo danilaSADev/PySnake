@@ -14,7 +14,6 @@ class Vector2:
 	def __sub__(self, vec):
 		return Vector2(self.x - vec.x, self.y - vec.y)
 
-
 	def __repr__(self):
 		result = "( x: {}; y: {} )".format(self.x, self.y)
 		return result
@@ -83,7 +82,7 @@ class GameBoard:
 	canvas = NotImplemented
 	snake = NotImplemented
 	def __init__(self, tk, board_size, cell_size):
-		self.canvas = tk.Canvas(width=500, height=500)
+		self.canvas = tk.Canvas(width=board_size.x * cell_size, height=board_size.y * cell_size)
 		self.canvas.pack()
 		self.board_size = board_size
 		self.snake = Snake(Vector2(int(board_size.x/2), int(board_size.y/2)))
@@ -121,7 +120,7 @@ class GameBoard:
 						isSnakeHere = True
 
 				if isSnakeHere:
-					self.canvas.create_rectangle(self.cell_size * x, self.cell_size * y, self.cell_size * (x + 1), self.cell_size * (y + 1), fill='red')
+					self.canvas.create_rectangle(self.cell_size * x, self.cell_size * y, self.cell_size * (x + 1), self.cell_size * (y + 1), fill='lightblue')
 				elif tempVec == self.bonus:
 					self.canvas.create_rectangle(self.cell_size * x, self.cell_size * y, self.cell_size * (x + 1), self.cell_size * (y + 1), fill='lightgreen')
 				else: 
